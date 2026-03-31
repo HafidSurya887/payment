@@ -10,7 +10,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
         
-        /* Animasi Gradient Bergerak di Background */
         body::before {
             content: '';
             position: fixed;
@@ -25,7 +24,6 @@
         }
         @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Efek Hover Halus */
         .payment-card {
             transition: all 0.3s ease;
         }
@@ -64,9 +62,16 @@
                 <div class="bg-slate-50 rounded-2xl p-3 border-2 border-dashed border-slate-200 shadow-inner">
                     <img src="qris.jpg" alt="QRIS PIDZ STORE" class="w-full rounded-xl transform scale-[0.98] active:scale-100 transition-transform">
                 </div>
+                
+                <div class="mt-5 p-3 bg-blue-50 rounded-xl border border-blue-100 text-center">
+                    <p class="text-[11px] text-blue-800 font-bold leading-relaxed">
+                        <i class="fas fa-info-circle mr-1"></i> Setelah TF, wajib klik tombol <span class="underline">SELESAI</span> yang ada di bawah untuk konfirmasi admin!
+                    </p>
+                </div>
+
                 <div class="text-center mt-4 space-y-1">
-                    <p class="text-xs text-slate-500 font-medium">Scan via DANA, OVO, GoPay, ShopeePay,</p>
-                    <p class="text-xs text-slate-500 font-medium">LinkAja, SeaBank, & m-Banking</p>
+                    <p class="text-[10px] text-slate-500 font-medium">Scan via DANA, OVO, GoPay, ShopeePay,</p>
+                    <p class="text-[10px] text-slate-500 font-medium">LinkAja, SeaBank, & m-Banking</p>
                 </div>
             </div>
 
@@ -82,15 +87,15 @@
                             <i class="fas fa-wallet text-blue-400"></i>
                             <span class="font-bold text-blue-700 text-sm tracking-tight">DANA/OVO/GOPAY</span>
                         </div>
-                        <span class="font-mono font-bold text-slate-800 bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm">088975532473</span>
+                        <span class="font-mono font-bold text-slate-800 bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm text-xs">088975532473</span>
                     </div>
                     
                     <div class="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100">
                         <div class="flex flex-col">
                             <span class="font-bold text-orange-700 text-sm tracking-tight">SEABANK</span>
-                            <span class="text-[10px] text-orange-400 font-semibold uppercase tracking-wider">A/N HAFID RIZKY SURYA</span>
+                            <span class="text-[9px] text-orange-400 font-bold uppercase tracking-wider">HAFID RIZKY SURYA</span>
                         </div>
-                        <span class="font-mono font-bold text-slate-800 bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm">901309067250</span>
+                        <span class="font-mono font-bold text-slate-800 bg-white px-3 py-1.5 rounded-lg border border-slate-100 shadow-sm text-xs">901309067250</span>
                     </div>
                 </div>
             </div>
@@ -118,11 +123,7 @@
 
     <script>
         function prosesPembayaran() {
-            // Sembunyikan main page
-            const mainPage = document.getElementById('main-page');
-            mainPage.style.display = 'none';
-
-            // Tampilkan loading page dengan transisi
+            document.getElementById('main-page').style.display = 'none';
             const loadingPage = document.getElementById('loading-page');
             loadingPage.style.display = 'flex';
             loadingPage.style.opacity = '1';
@@ -134,7 +135,6 @@
                 "Note: SERTAKAN BUKTI TF" 
             );
 
-            // Redirect setelah 3 detik
             setTimeout(function() {
                 window.location.href = `https://wa.me/${noWA}?text=${pesan}`;
             }, 3000);
