@@ -1,0 +1,21 @@
+name: Deploy ke Hosting
+on:
+  push:
+    branches:
+      - main  # Ganti jadi 'master' kalau branch utama lo namanya master
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ambil Code Terbaru
+      uses: actions/checkout@v3
+
+    - name: Kirim ke Hosting lewat FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ./public_html/  # Folder tujuan di hosting
